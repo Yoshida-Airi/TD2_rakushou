@@ -11,6 +11,9 @@ void GamePlayScene::Initialize()
 
 	player_ = new Player;
 
+	// ビュープロジェクションの初期化
+	viewProjection_.Initialize();
+
 	spriteData->vertex[0] = { 0.0f,360.0f,0.0f,1.0f };
 	spriteData->vertex[1] = { 0.0f,0.0f,0.0f,1.0f };
 	spriteData->vertex[2] = { 640.0f,360.0f,0.0f,1.0f };
@@ -25,21 +28,12 @@ void GamePlayScene::Initialize()
 		{0.0f,0.0f,0.0f}
 	};
 
-	// ビュープロジェクションの初期化
-	viewProjection_.Initialize();
+	spriteTransform_.Initialize();
 
 	uvTexture = texture->LoadTexture("Resources/uvChecker.png");
 	monsterTexture = texture->LoadTexture("Resources/monsterBall.png");
 
 
-
-	//transform_=
-	//{
-	//	{1.0f,1.0f,1.0f},
-	//	{0.0f,0.0f,0.0f},
-	//	{0.0f,0.0f,0.0f}
-	//};
-	//
 
 	sprite->Initialize(spriteData, uvTexture);
 
@@ -52,22 +46,11 @@ void GamePlayScene::Update()
 {
 	input->Update();
 
-	//if (input->PushKey(DIK_UP))
-	//{
-	//	transform_.translate.x += 0.01f;
-	//}
-
-	//if (input->PushKey(DIK_W))
-	//{
-	//	
-	//}
-
-	player_->Update();
-
-	
 
 	sprite->Update();
 
+
+	player_->Update();
 
 
 }
@@ -76,7 +59,7 @@ void GamePlayScene::Draw()
 {
 
 	player_->Draw(viewProjection_);
-	sprite->Draw();
+	sprite->Draw(spriteTransform_);
 
 	
 }

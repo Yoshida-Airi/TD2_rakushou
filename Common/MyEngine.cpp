@@ -74,7 +74,7 @@ Microsoft::WRL::ComPtr< ID3D12Resource> MyEngine::CreateBufferResource(size_t si
 		IID_PPV_ARGS(&resource));
 	assert(SUCCEEDED(hr));
 
-	return resource.Get();
+	return resource;
 }
 
 /*=====================================*/

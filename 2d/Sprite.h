@@ -9,6 +9,8 @@
 #include"Transform.h"
 #include"Vector4.h"
 #include"Matrix4x4.h"
+#include"WorldTransform.h"
+#include"ViewProjection.h"
 
 #include<wrl.h>
 
@@ -41,7 +43,7 @@ public:
 	/// <summary>
 	/// 描画処理
 	/// </summary>
-	void Draw();
+	void Draw(WorldTransform transform);
 
 
 private:
@@ -94,6 +96,9 @@ private:
 
 	D3D12_VERTEX_BUFFER_VIEW vertexBufferView_{};	//頂点バッファビュー
 	D3D12_INDEX_BUFFER_VIEW indexBufferView_{};	//インデックスバッファビュー
+
+	WorldTransform worldTransform_;
+	ViewProjection viewProjection_;
 
 };
 

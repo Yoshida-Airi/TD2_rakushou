@@ -1,11 +1,15 @@
 #include "ViewProjection.h"
 
+ViewProjection::~ViewProjection()
+{
+	
+}
+
 void ViewProjection::Initialize()
 {
 	CreateConstBuffer();
 	Map();
 	UpdateMatrix();
-	TransferMatrix();
 }
 
 void ViewProjection::CreateConstBuffer()
@@ -14,7 +18,7 @@ void ViewProjection::CreateConstBuffer()
 }
 
 void ViewProjection::Map() {
-	constBuff_.Get()->Map(0, nullptr, reinterpret_cast<void**>(&constMap));
+	constBuff_->Map(0, nullptr, reinterpret_cast<void**>(&constMap));
 }
 
 void ViewProjection::UpdateMatrix() 

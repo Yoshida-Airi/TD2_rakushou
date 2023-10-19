@@ -11,7 +11,6 @@
 struct ConstBufferDataViewProjection {
 	Matrix4x4 view;       // ワールド → ビュー変換行列
 	Matrix4x4 projection; // ビュー → プロジェクション変換行列
-	Vector3 cameraPos;    // カメラ座標（ワールド座標）
 };
 
 /// <summary>
@@ -23,14 +22,14 @@ struct ViewProjection {
 	// マッピング済みアドレス
 	ConstBufferDataViewProjection* constMap = nullptr;
 
-#pragma region ビュー行列の設定
+
 	// X,Y,Z軸回りのローカル回転角
-	Vector3 rotation_ = { 0, 0, 0 };
+	Vector3 rotation_ = { 0.0f, 0.0f,0.0f };
 	// ローカル座標
 	Vector3 translation_ = { 0, 0, -50 };
-#pragma endregion
 
-#pragma region 射影行列の設定
+
+
 	// 垂直方向視野角
 	float fovAngleY = 45.0f * 3.141592654f / 180.0f;
 	// ビューポートのアスペクト比
@@ -39,12 +38,14 @@ struct ViewProjection {
 	float nearZ = 0.1f;
 	// 深度限界（奥側）
 	float farZ = 1000.0f;
-#pragma endregion
+
 
 	// ビュー行列
 	Matrix4x4 matView;
 	// 射影行列
 	Matrix4x4 matProjection;
+
+	~ViewProjection();
 
 	/// <summary>
 	/// 初期化

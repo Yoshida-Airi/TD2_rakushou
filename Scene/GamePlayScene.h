@@ -32,6 +32,7 @@ private:
 	uint32_t monsterTexture;
 
 	ViewProjection viewProjection_;
+	WorldTransform spriteTransform_;
 
 	Player* player_ = nullptr;
 

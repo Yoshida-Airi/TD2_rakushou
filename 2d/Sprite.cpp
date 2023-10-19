@@ -87,11 +87,17 @@ void Sprite::Update()
 	ImGui::End();
 #endif // _DEBUG
 
-	
+
+	viewProjection_.Initialize();
+	viewProjection_.constMap->view = MakeIdentity4x4();
+	viewProjection_.constMap->projection = MakeOrthographicmatrix(0.0f, 0.0f, float(winApp_->GetWidth()), float(winApp_->GetHeight()), 0.0f, 100.0f);
+
 
 }
 
-void Sprite::Draw()
+
+
+void Sprite::Draw(WorldTransform transform)
 {
 	dxCommon_->GetCommandList()->IASetVertexBuffers(0, 1, &vertexBufferView_);	//VBVを設定
 	//形状を設定。PS0にせっていしているものとはまた別。同じものを設定する
@@ -99,9 +105,11 @@ void Sprite::Draw()
 
 	dxCommon_->GetCommandList()->IASetIndexBuffer(&indexBufferView_);
 	dxCommon_->GetCommandList()->SetGraphicsRootConstantBufferView(0, materialResource_->GetGPUVirtualAddress());
-	dxCommon_->GetCommandList()->SetGraphicsRootConstantBufferView(1, transformationmatrixResource->GetGPUVirtualAddress());
+	dxCommon_->GetCommandList()->SetGraphicsRootConstantBufferView(1, transform.constBuff_->GetGPUVirtualAddress());
 	dxCommon_->GetCommandList()->SetGraphicsRootDescriptorTable(2, texture_->GetGPUHandle(textureHandle_));
-	//描画
+	dxCommon_->GetCommandList()->SetGraphicsRootConstantBufferView(4, viewProjection_.constBuff_->GetGPUVirtualAddress());
+
+
 	/*dxCommon_->GetCommandList()->DrawInstanced(6, 1, 0, 0);*/
 	dxCommon_->GetCommandList()->DrawIndexedInstanced(6, 1, 0, 0, 0);
 }
