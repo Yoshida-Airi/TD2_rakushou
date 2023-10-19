@@ -47,10 +47,10 @@ void GamePlayScene::Update()
 	input->Update();
 
 
+	player_->Update();
+
 	sprite->Update();
 
-
-	player_->Update();
 
 
 }
