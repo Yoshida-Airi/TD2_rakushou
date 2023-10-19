@@ -16,9 +16,8 @@ struct ConstBufferDataViewProjection {
 /// <summary>
 /// ビュープロジェクション変換データ
 /// </summary>
-class ViewProjection {
+struct ViewProjection {
 
-public:
 	// 定数バッファ
 	Microsoft::WRL::ComPtr<ID3D12Resource> constBuff_;
 	// マッピング済みアドレス
