@@ -7,6 +7,7 @@ ViewProjection::~ViewProjection()
 
 void ViewProjection::Initialize()
 {
+	engine_ = MyEngine::GetInstance();
 	CreateConstBuffer();
 	Map();
 	UpdateMatrix();
@@ -14,7 +15,7 @@ void ViewProjection::Initialize()
 
 void ViewProjection::CreateConstBuffer()
 {
-	constBuff_ = MyEngine::GetInstance()->CreateBufferResource(sizeof(ConstBufferDataViewProjection));
+	constBuff_ = engine_->CreateBufferResource(sizeof(ConstBufferDataViewProjection));
 }
 
 void ViewProjection::Map() {

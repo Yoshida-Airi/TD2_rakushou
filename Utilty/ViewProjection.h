@@ -16,7 +16,9 @@ struct ConstBufferDataViewProjection {
 /// <summary>
 /// ビュープロジェクション変換データ
 /// </summary>
-struct ViewProjection {
+class ViewProjection {
+
+public:
 	// 定数バッファ
 	Microsoft::WRL::ComPtr<ID3D12Resource> constBuff_;
 	// マッピング済みアドレス
@@ -28,7 +30,7 @@ struct ViewProjection {
 	// ローカル座標
 	Vector3 translation_ = { 0, 0, -50 };
 
-
+	MyEngine* engine_ = nullptr;
 
 	// 垂直方向視野角
 	float fovAngleY = 45.0f * 3.141592654f / 180.0f;

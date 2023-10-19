@@ -2,6 +2,7 @@
 
 void WorldTransform::Initialize()
 {
+	engine_ = MyEngine::GetInstance();
 	matWorld_ = MakeIdentity4x4();
 	CreateConstBuffer();
 	Map();
@@ -10,7 +11,7 @@ void WorldTransform::Initialize()
 
 void WorldTransform::CreateConstBuffer()
 {
-	constBuff_ = MyEngine::GetInstance()->CreateBufferResource(sizeof(ConstBufferDataWorldTransform));
+	constBuff_ = engine_->CreateBufferResource(sizeof(ConstBufferDataWorldTransform));
 }
 
 void WorldTransform::Map()

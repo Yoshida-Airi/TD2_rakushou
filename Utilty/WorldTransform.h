@@ -22,6 +22,8 @@ struct WorldTransform {
 	// 親となるワールド変換へのポインタ
 	const WorldTransform* parent_ = nullptr;
 
+	MyEngine* engine_;
+
 	/// <summary>
 	/// 初期化
 	/// </summary>
