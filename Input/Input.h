@@ -9,6 +9,8 @@
 
 #include"WindowAPI.h"
 
+#include<Xinput.h>
+
 class Input
 {
 public:
@@ -33,6 +35,8 @@ public:
 	/// <param name="keyNumber">キー番号</param>
 	/// <returns>トリガーかどうか</returns>
 	bool TriggerKey(BYTE keyNumber);
+
+	bool GetJoystickState(int32_t stickNo, XINPUT_STATE& state);
 
 private:
 

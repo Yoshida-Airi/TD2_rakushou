@@ -47,6 +47,16 @@ void Player::Update()
 		move.y -= kCharacterSpeed;
 	}
 
+	//ゲームパットの状態を得る変数(XINPUT)
+	XINPUT_STATE joyState;
+
+	if (Input::GetInstance()->GetJoystickState(0, joyState))
+	{
+		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X)
+		{
+			move.y -= kCharacterSpeed;
+		}
+	}
 
 
 	// 座標移動(ベクトルの加算)
