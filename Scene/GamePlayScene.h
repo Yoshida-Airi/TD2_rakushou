@@ -8,7 +8,7 @@
 #include"Input.h"
 
 #include"Player.h"
-
+#include"Object/Block/Block.h"
 
 class GamePlayScene
 {
@@ -18,6 +18,24 @@ public:
 	void Update();
 	void Draw();
 	void Finalize();
+
+
+	/// <summary>
+	/// ブロックデータの読み込み
+	/// </summary>
+	void LoadBlockPopData();
+
+	/// <summary>
+	/// ブロック発生コマンドの更新
+	/// </summary>
+	void UpdateBlockPopCommands();
+
+	void BlockSpown(Vector3, float);
+
+	/// <summary>
+	///	敵:敵弾を追加する
+	/// </summary>
+	void AddBlock(Block* block);
 
 private:
 
@@ -37,6 +55,12 @@ private:
 	Player* player_ = nullptr;
 
 
+	Vector3 blockPos;
 
+
+	// ブロック発生コマンド
+	std::stringstream blockPopCommands;
+	// ブロック
+	std::list<Block*> blocks_;
 };
 

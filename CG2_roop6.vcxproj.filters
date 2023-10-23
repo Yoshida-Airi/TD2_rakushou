@@ -79,6 +79,12 @@
     <Filter Include="ヘッダー ファイル\Object\Player">
       <UniqueIdentifier>{89e12abc-e101-4ce2-80f2-08f393e18eb9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Block">
+      <UniqueIdentifier>{45cc7356-e9ab-4ccb-9bdb-c620542ac674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Block">
+      <UniqueIdentifier>{628f215e-bad0-4920-9264-5d5c7236bc4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -161,6 +167,12 @@
     </ClCompile>
     <ClCompile Include="Utilty\ViewProjection.cpp">
       <Filter>ソース ファイル\Utilty</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Block\Block.cpp">
+      <Filter>ソース ファイル\Object\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +277,12 @@
     </ClInclude>
     <ClInclude Include="Utilty\ViewProjection.h">
       <Filter>ヘッダー ファイル\Utilty</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Block\Block.h">
+      <Filter>ヘッダー ファイル\Object\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

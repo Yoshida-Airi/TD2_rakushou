@@ -5,7 +5,8 @@
 #include "WorldTransform.h"
 #include <cassert>
 
-class Block {
+class Block
+{
 public:
 	void Initialize(Model* model, Vector3 translation);
 	~Block();

@@ -27,7 +27,7 @@ struct ViewProjection {
 	// X,Y,Z軸回りのローカル回転角
 	Vector3 rotation_ = { 0.0f, 0.0f,0.0f };
 	// ローカル座標
-	Vector3 translation_ = { 0, 0, -50 };
+	Vector3 translation_ = { 0, 0, -70 };
 
 	MyEngine* engine_ = nullptr;
 
