@@ -29,12 +29,7 @@ void Model::Initialize(const std::string& directoryPath, const std::string& file
 	materialData_->enableLighting = true;
 	materialData_->uvTransform = MakeIdentity4x4();
 
-	cameraTransform_ =
-	{
-		{1.0f, 1.0f, 1.0f },
-		{0.0f, 0.0f, 0.0f },
-		{0.0f, 0.0f, -100.0f}
-	};
+
 
 	//ライトのデフォルト値
 
