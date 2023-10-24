@@ -3,6 +3,7 @@
 #include"GameTitleScene.h"
 #include"LeakCheck.h"
 
+
 enum Scene
 {
 	TITLE,
@@ -38,6 +39,9 @@ private:
 	ImGuiManager* imGuiManager = nullptr;
 	TextureManager* texture = nullptr;
 	Input* input = nullptr;
+	Audio* audio = nullptr;
+
 	Scene scene;
+	
 
 };

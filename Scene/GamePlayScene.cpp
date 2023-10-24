@@ -4,6 +4,7 @@ void GamePlayScene::Initialize()
 {
 	texture = TextureManager::GetInstance();
 	input = Input::GetInstance();
+	audio = Audio::GetInstance();
 
 	spriteData = new SpriteData;
 	sprite = new Sprite;
@@ -35,7 +36,8 @@ void GamePlayScene::Initialize()
 	uvTexture = texture->LoadTexture("Resources/galaxy.png");
 	monsterTexture = texture->LoadTexture("Resources/monsterBall.png");
 
-
+	soundData1 = audio->SoundLoadWave("Resources/Sounds/tasogare.wav");
+	audio->SoundPlayWave(soundData1, true);
 
 	sprite->Initialize(spriteData, uvTexture);
 	sphere->Initialize(uvTexture);

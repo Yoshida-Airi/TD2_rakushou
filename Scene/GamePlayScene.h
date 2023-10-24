@@ -6,6 +6,7 @@
 #include"Sphere.h"
 #include"Model.h"
 #include"Input.h"
+#include"Audio.h"
 
 #include"Player.h"
 #include"Object/Block/Block.h"
@@ -46,6 +47,9 @@ private:
 
 	TextureManager* texture = nullptr;
 	Input* input = nullptr;
+	Audio* audio = nullptr;
+
+	SoundData soundData1;
 
 	SpriteData* spriteData = nullptr;
 	Sprite* sprite;
