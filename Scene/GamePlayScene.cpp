@@ -231,7 +231,7 @@ void GamePlayScene::BlockSpown(Vector3 translation, float type) {
 		block_->Initialize(model2_,  translation,"cube.obj");
 	}
 	if (type == 3) {
-		block_->Initialize(model3_, translation,"plane.obj");
+		block_->Initialize(model3_, translation, "clearblock.obj");
 	}
 	// ブロックのタイプ設定
 	block_->SetType(type);
