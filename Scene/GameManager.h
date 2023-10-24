@@ -3,6 +3,12 @@
 #include"GameTitleScene.h"
 #include"LeakCheck.h"
 
+enum Scene
+{
+	TITLE,
+	PLAY,
+	OVER,
+};
 
 class GameManager
 {
@@ -12,6 +18,8 @@ public:
 	void Update();
 	void Draw();
 	void Finalize();
+
+
 
 private:
 	GamePlayScene* gameScene = nullptr;
@@ -23,7 +31,6 @@ private:
 	const uint32_t kWindowWidth = 1280;
 	const uint32_t kWindowHeight = 720;
 
-	bool isScene = 0;
 
 	WindowAPI* winApp = nullptr;
 	DirectXCommon* dxCommon = nullptr;
@@ -31,6 +38,7 @@ private:
 	ImGuiManager* imGuiManager = nullptr;
 	TextureManager* texture = nullptr;
 	Input* input = nullptr;
+	Scene scene;
 
 };
 

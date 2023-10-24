@@ -24,11 +24,13 @@ void GameManager::Initialize()
 	CoInitializeEx(0, COINIT_MULTITHREADED);
 
 
-
+	title = new GameTitleScene;
+	title->Initialize();
 	gameScene = new GamePlayScene;
 	gameScene->Initialize();
-	//title = new GameTitleScene;
-	//title->Initialize();
+
+	scene = TITLE;
+	
 }
 
 void GameManager::Update()
@@ -40,11 +42,48 @@ void GameManager::Update()
 	imGuiManager->Begin();
 #endif // _DEBUG
 
+	switch (scene)
+	{
+	case TITLE:
+		title->Update();
+		title->Draw();
+
+		if (input->TriggerKey(DIK_SPACE))
+		{
+			scene = PLAY;
+		}
+
+		break;
+
+	case PLAY:
+		gameScene->Update();
+		gameScene->Draw();
+
+		if (input->TriggerKey(DIK_SPACE))
+		{
+			scene = OVER;
+
+		}
+
+		break;
+
+	case OVER:
+
+		scene = TITLE;
+
+
+		break;
+	}
+
 	
+#ifdef _DEBUG	//現在のシーン番号
+	ImGui::Begin("Scene");
+	ImGui::Text("%d", scene);
+	ImGui::End();
+#endif // _DEBUG
 
 
-	gameScene->Update();
-	//title->Update();
+	
 
 #ifdef _DEBUG
 	imGuiManager->End();
@@ -54,8 +93,7 @@ void GameManager::Update()
 
 void GameManager::Draw()
 {
-	gameScene->Draw();
-	//title->Draw();
+
 
 #ifdef _DEBUG
 	imGuiManager->Draw();
@@ -76,10 +114,8 @@ void GameManager::Finalize()
 	CoUninitialize();
 
 
-	
-
 	gameScene->Finalize();
-	/*title->Finalize();*/
+	title->Finalize();
 
 	delete engine;
 	delete texture;
