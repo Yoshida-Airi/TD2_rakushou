@@ -9,6 +9,7 @@
 
 #include"Player.h"
 #include"Object/Block/Block.h"
+#include"CSVReader.h"
 
 class GamePlayScene
 {

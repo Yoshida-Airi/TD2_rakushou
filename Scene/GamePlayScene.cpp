@@ -66,6 +66,9 @@ void GamePlayScene::Draw()
 	for (Block* block : blocks_) {
 		block->Draw(viewProjection_);
 	}
+
+
+
 	player_->Draw(viewProjection_);
 	sprite->Draw(spriteTransform_);
 	
