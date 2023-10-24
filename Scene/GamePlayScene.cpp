@@ -8,7 +8,7 @@ void GamePlayScene::Initialize()
 	spriteData = new SpriteData;
 	sprite = new Sprite;
 	model_ = new Model;
-
+	sphere = new Sphere;
 	player_ = new Player;
 
 	// ビュープロジェクションの初期化
@@ -30,13 +30,13 @@ void GamePlayScene::Initialize()
 
 	spriteTransform_.Initialize();
 
-	uvTexture = texture->LoadTexture("Resources/uvChecker.png");
+	uvTexture = texture->LoadTexture("Resources/galaxy.png");
 	monsterTexture = texture->LoadTexture("Resources/monsterBall.png");
 
 
 
 	sprite->Initialize(spriteData, uvTexture);
-
+	sphere->Initialize(uvTexture);
 	Vector3 playerPos = { -36, 20, 0 };
 	player_->Initialize(model_, playerPos);
 
@@ -53,7 +53,7 @@ void GamePlayScene::Update()
 		block->Update();
 	}
 	player_->Update();
-
+	sphere->Update();
 	sprite->Update();
 
 	CheckAllCollisions();
@@ -71,7 +71,8 @@ void GamePlayScene::Draw()
 
 	player_->Draw(viewProjection_);
 	//sprite->Draw(spriteTransform_);
-	
+	sphere->Draw();
+
 }
 
 void GamePlayScene::Finalize()
@@ -80,7 +81,8 @@ void GamePlayScene::Finalize()
 	delete model_;
 	delete sprite;
 	delete spriteData;
-	
+	delete sphere;
+
 	for (Block* block : blocks_) {
 		delete block;
 	}

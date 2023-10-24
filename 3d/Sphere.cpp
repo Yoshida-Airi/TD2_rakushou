@@ -132,16 +132,16 @@ void Sphere::Initialize(uint32_t textureHandle)
 
 	transform_ =
 	{
-		{1.0f,1.0f,1.0f},
+		{40.0f,35.0f,-40.0f},
 		{0.0f,0.0f,0.0f},
-		{0.0f,0.0f,0.0f}
+		{0.0f,0.0f,-25.0f}
 	};
 
 	cameraTransform_ =
 	{
 		{1.0f, 1.0f, 1.0f },
 		{0.0f, 0.0f, 0.0f },
-		{0.0f, 0.0f, -10.0f}
+		{0.0f, 0.0f, 0.0f}
 	};
 
 	//ライトのデフォルト値
@@ -154,7 +154,7 @@ void Sphere::Initialize(uint32_t textureHandle)
 
 void Sphere::Update()
 {
-	transform_.rotate.y += 0.01f;
+	transform_.rotate.y += 0.00005f;
 
 	Matrix4x4 worldMatrix = MakeAffinMatrix(transform_.scale, transform_.rotate, transform_.translate);
 

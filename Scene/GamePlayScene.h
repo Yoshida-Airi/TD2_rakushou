@@ -49,6 +49,7 @@ private:
 
 	SpriteData* spriteData = nullptr;
 	Sprite* sprite;
+	Sphere* sphere;
 	Model* model_ = nullptr;
 
 	uint32_t uvTexture;
