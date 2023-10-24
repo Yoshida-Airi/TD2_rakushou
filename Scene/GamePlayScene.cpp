@@ -10,7 +10,7 @@ void GamePlayScene::Initialize()
 	sprite = new Sprite;
 	model_ = new Model;
 
-	soundData1 = audio->SoundLoadWave("Resources/Sound/Cursor3.wav");
+	soundData1 = audio->SoundLoadWave("Resources/Sound/distress.wav");
 	audio->SoundPlayWave(soundData1, true);
 
 	player_ = new Player;
