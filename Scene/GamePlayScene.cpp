@@ -37,7 +37,7 @@ void GamePlayScene::Initialize()
 
 	sprite->Initialize(spriteData, uvTexture);
 
-	Vector3 playerPos = { -38, 22, 0 };
+	Vector3 playerPos = { -36, 20, 0 };
 	player_->Initialize(model_, playerPos);
 
 	LoadBlockPopData();
@@ -56,7 +56,7 @@ void GamePlayScene::Update()
 
 	sprite->Update();
 
-
+	CheckAllCollisions();
 
 }
 
@@ -70,7 +70,7 @@ void GamePlayScene::Draw()
 
 
 	player_->Draw(viewProjection_);
-	sprite->Draw(spriteTransform_);
+	//sprite->Draw(spriteTransform_);
 	
 }
 
@@ -85,6 +85,69 @@ void GamePlayScene::Finalize()
 		delete block;
 	}
 
+}
+
+void GamePlayScene::CheckAllCollisions(){
+	// 判定衝突AとBの座標
+	Vector3 posA, posB;
+
+#pragma region 自キャラとブロックの当たり判定
+	// 自キャラの座標
+	posA = player_->GetWorldPosition();
+
+	// 自キャラとブロックすべての当たり判定
+	for (Block* block : blocks_) {
+		// ブロックの座標
+		posB = block->GetWorldPosition();
+
+		float p2eX = (posB.x - posA.x) * (posB.x - posA.x);
+		float p2eY = (posB.y - posA.y) * (posB.y - posA.y);
+		float p2eZ = (posB.z - posA.z) * (posB.z - posA.z);
+
+		float pRadius = 1.0f;
+		float eRadius = 1.0f;
+
+		float L = (pRadius + eRadius) * (pRadius + eRadius);
+
+		if (p2eX + p2eY + p2eZ <= L) {
+			if (block->GetType() == 1) {
+				player_->OnCollisionY();
+			}
+
+			if (block->GetType() == 2) {
+				player_->OnCollisionX();
+			}
+		}
+
+		/*float leftA = posA.x;
+		float rightA = posA.x + 2.0f;
+		float topA = posA.y;
+		float bottomA = posA.y - 2.0f;
+		float nearA = posA.z;
+		float farA = posA.z + 2.0f;
+
+		float leftB = posB.x;
+		float rightB = posB.x + 2.0f;
+		float topB = posB.y;
+		float bottomB = posB.y - 2.0f;
+		float nearB = posB.z;
+		float farB = posB.z + 2.0f;
+
+		if (leftA <= rightB && leftB <= rightA &&
+			topA <= bottomB && topB <= bottomA &&
+			nearA <= farB && nearB <= farA) {
+
+			if (block->GetType() == 1) {
+				player_->OnCollisionY();
+			}
+
+			if (block->GetType() == 2) {
+				player_->OnCollisionX();
+			}
+		}*/
+	}
+
+#pragma endregion
 }
 
 void GamePlayScene::LoadBlockPopData() {

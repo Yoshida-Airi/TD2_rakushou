@@ -32,19 +32,18 @@ void Player::Update()
 	move.x += kCharacterSpeedX;
 	move.y += kCharacterSpeedY;
 
-	if (isHit) {
-		move.y = 0;
-		isHit = false;
-	}
+	// キャラクターの移動ベクトル
+	move = { 0, 0, 0 };
 
-	if (isHit2) {
-		kCharacterSpeedY = 0.2f;
-		isHit2 = false;
+	if (isStart) {
+		move.x += kCharacterSpeedX;
+		move.y += kCharacterSpeedY;
 	}
 
 	// 押した方向で移動ベクトルを変更(左右)
 	if (input_->PushKey(DIK_SPACE)) {
 		move.y -= kCharacterSpeed;
+		isStart = true;
 	}
 
 	//ゲームパットの状態を得る変数(XINPUT)
@@ -76,4 +75,23 @@ void Player::Update()
 void Player::Draw(ViewProjection viewProjection)
 {
 	model_->Draw(viewProjection, worldTransform_);
+}
+
+void Player::OnCollisionX(){
+	kCharacterSpeedX *= -1;
+}
+
+void Player::OnCollisionY(){
+	kCharacterSpeedY *= -1;
+}
+
+Vector3 Player::GetWorldPosition() {
+	// ワールド座標を入れる変数
+	Vector3 worldPos;
+	// ワールド行列の平行移動成分を取得
+	worldPos.x = worldTransform_.matWorld_.m[3][0];
+	worldPos.y = worldTransform_.matWorld_.m[3][1];
+	worldPos.z = worldTransform_.matWorld_.m[3][2];
+
+	return worldPos;
 }

@@ -20,6 +20,10 @@ public:
 	void Draw();
 	void Finalize();
 
+	/// <summary>
+///	衝突判定と応答
+/// </summary>
+	void CheckAllCollisions();
 
 	/// <summary>
 	/// ブロックデータの読み込み

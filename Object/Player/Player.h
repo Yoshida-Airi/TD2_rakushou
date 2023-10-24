@@ -24,6 +24,15 @@ public:
 	/// </ summary>
 	void Draw(ViewProjection viewProjection);
 
+	/// <summary>
+	/// 当たり判定
+	/// </summary>
+	void OnCollisionX();
+	void OnCollisionY();
+
+	// ワールド座標を取得
+	Vector3 GetWorldPosition();
+
 private:
 
 	Model* model_ = nullptr;
@@ -32,13 +41,12 @@ private:
 	WorldTransform worldTransform_;
 
 	// キャラクターの移動速さ
-	float kCharacterSpeedX = 0.2f;
-	float kCharacterSpeedY = 0.2f;
+	float kCharacterSpeedX = 0.15f;
+	float kCharacterSpeedY = 0.15f;
 
-	float kCharacterSpeed = 0.4f;
+	float kCharacterSpeed = 0.3f;
 
-	bool isHit = false;
-	bool isHit2 = false;
+	bool isStart = false;
 
 	Vector3 move;
 };
