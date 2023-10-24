@@ -10,7 +10,7 @@ void GameTitleScene::Initialize()
 
 void GameTitleScene::Update()
 {
-
+	input->Update();
 }
 
 void GameTitleScene::Draw()
