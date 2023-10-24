@@ -85,6 +85,12 @@
     <Filter Include="ヘッダー ファイル\Object\Block">
       <UniqueIdentifier>{628f215e-bad0-4920-9264-5d5c7236bc4b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Audio">
+      <UniqueIdentifier>{d36264e8-6fbc-4b20-85e4-08e6d7b55199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Audio">
+      <UniqueIdentifier>{f973bd64-e372-453a-a492-114da9382559}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -171,8 +177,8 @@
     <ClCompile Include="Object\Block\Block.cpp">
       <Filter>ソース ファイル\Object\Block</Filter>
     </ClCompile>
-    <ClCompile Include="Audio.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Audio\Audio.cpp">
+      <Filter>ソース ファイル\Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -281,8 +287,8 @@
     <ClInclude Include="Object\Block\Block.h">
       <Filter>ヘッダー ファイル\Object\Block</Filter>
     </ClInclude>
-    <ClInclude Include="Audio.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Audio\Audio.h">
+      <Filter>ヘッダー ファイル\Audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
