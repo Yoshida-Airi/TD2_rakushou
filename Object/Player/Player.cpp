@@ -7,14 +7,14 @@ Player::~Player()
 /// <summary>
 /// 初期化
 /// </ summary>
-void Player::Initialize(Model* model, Vector3 position)
+void Player::Initialize(Model* model, Vector3 position, const std::string& filename)
 {
 	assert(model);
 	model_ = model;
 	
 	input_ = Input::GetInstance();
 
-	model_->Initialize("Resources", "cube.obj");
+	model_->Initialize("Resources", filename);
 
 	worldTransform_.Initialize();
 	worldTransform_.translation_ = position;

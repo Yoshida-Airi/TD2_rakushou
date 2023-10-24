@@ -16,6 +16,8 @@ public:
 		D3D12_CPU_DESCRIPTOR_HANDLE textureSrvHandleCPU;
 		D3D12_GPU_DESCRIPTOR_HANDLE textureSrvHandleGPU;
 		Microsoft::WRL::ComPtr< ID3D12Resource> textureResource;
+		std::string filename{};
+		uint32_t textureHandle;
 	};
 
 	/// <summary>

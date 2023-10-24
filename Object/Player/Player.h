@@ -12,7 +12,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </ summary>
-	void Initialize(Model* model,Vector3 position);
+	void Initialize(Model* model,Vector3 position, const std::string& filename);
 	
 	/// <summary>
 	/// 初期化

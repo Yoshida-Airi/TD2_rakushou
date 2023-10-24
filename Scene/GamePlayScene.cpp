@@ -8,6 +8,8 @@ void GamePlayScene::Initialize()
 	spriteData = new SpriteData;
 	sprite = new Sprite;
 	model_ = new Model;
+	model2_ = new Model;
+	model3_ = new Model;
 	sphere = new Sphere;
 	player_ = new Player;
 
@@ -38,7 +40,7 @@ void GamePlayScene::Initialize()
 	sprite->Initialize(spriteData, uvTexture);
 	sphere->Initialize(uvTexture);
 	Vector3 playerPos = { -36, 20, 0 };
-	player_->Initialize(model_, playerPos);
+	player_->Initialize(model_, playerPos, "plane.obj");
 
 	LoadBlockPopData();
 
@@ -79,6 +81,8 @@ void GamePlayScene::Finalize()
 {
 	delete player_;
 	delete model_;
+	delete model2_;
+	delete model3_;
 	delete sprite;
 	delete spriteData;
 	delete sphere;
@@ -220,13 +224,13 @@ void GamePlayScene::UpdateBlockPopCommands() {
 
 void GamePlayScene::BlockSpown(Vector3 translation, float type) {
 	// ブロックの生成
-	Block* block_ = new Block();
+ 	Block* block_ = new Block();
 	// ブロックの初期化
 	if (type <= 2) {
-		block_->Initialize(model_,  translation);
+		block_->Initialize(model2_,  translation,"cube.obj");
 	}
 	if (type == 3) {
-		block_->Initialize(model_, translation);
+		block_->Initialize(model3_, translation,"plane.obj");
 	}
 	// ブロックのタイプ設定
 	block_->SetType(type);

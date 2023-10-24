@@ -3,10 +3,11 @@
 #include "Player.h"
 #include "ImGuiManager.h"
 
-void Block::Initialize(Model* model, Vector3 translation) {
+void Block::Initialize(Model* model, Vector3 translation, const std::string& filename) {
 	// NULLポインタチェック
 	assert(model);
 	model_ = model;
+	model_->Initialize("Resources", filename);
 
 
 	worldTransform_.Initialize();

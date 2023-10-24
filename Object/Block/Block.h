@@ -8,7 +8,7 @@
 class Block
 {
 public:
-	void Initialize(Model* model, Vector3 translation);
+	void Initialize(Model* model, Vector3 translation, const std::string& filename);
 	~Block();
 
 	void Move();

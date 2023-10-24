@@ -34,6 +34,16 @@ void TextureManager::Update()
 uint32_t TextureManager::LoadTexture(const std::string& filePath)
 {
 	uint32_t index = TextureCount + 1;
+
+	
+	for (int i = 0; i < kMaxTexture; i++)
+	{
+		if (textures_[i].filename == filePath)
+		{
+			return textures_[i].textureHandle;
+		}
+	}
+
 	for (int i = 0; i < kMaxTexture; ++i) {
 		if (IsusedTexture[i] == false) {
 			index = i;
@@ -67,6 +77,9 @@ uint32_t TextureManager::LoadTexture(const std::string& filePath)
 	//先頭はImGuiが使っているので次のを使う
 	textures_.at(index).textureSrvHandleCPU.ptr += dxCommon_->GetDevice()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 	textures_.at(index).textureSrvHandleGPU.ptr += dxCommon_->GetDevice()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+	textures_.at(index).filename = filePath;
+	textures_.at(index).textureHandle = index;
+
 	//SRVの作成
 	dxCommon_->GetDevice()->CreateShaderResourceView(textures_.at(index).textureResource.Get(), &srvDesc, textures_.at(index).textureSrvHandleCPU);
 

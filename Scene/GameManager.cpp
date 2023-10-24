@@ -29,7 +29,7 @@ void GameManager::Initialize()
 	gameScene = new GamePlayScene;
 	gameScene->Initialize();
 
-	scene = TITLE;
+	scene = PLAY;
 
 }
 
