@@ -4,10 +4,14 @@ void GamePlayScene::Initialize()
 {
 	texture = TextureManager::GetInstance();
 	input = Input::GetInstance();
+	audio = Audio::GetInstance();
 
 	spriteData = new SpriteData;
 	sprite = new Sprite;
 	model_ = new Model;
+
+	soundData1 = audio->SoundLoadWave("Resources/Sound/Cursor3.wav");
+	audio->SoundPlayWave(soundData1, true);
 
 	player_ = new Player;
 
@@ -33,7 +37,7 @@ void GamePlayScene::Initialize()
 	uvTexture = texture->LoadTexture("Resources/uvChecker.png");
 	monsterTexture = texture->LoadTexture("Resources/monsterBall.png");
 
-
+	
 
 	sprite->Initialize(spriteData, uvTexture);
 
@@ -47,6 +51,8 @@ void GamePlayScene::Initialize()
 void GamePlayScene::Update()
 {
 	input->Update();
+	
+	
 
 	UpdateBlockPopCommands();
 	for (Block* block : blocks_) {
@@ -56,7 +62,7 @@ void GamePlayScene::Update()
 
 	sprite->Update();
 
-
+	
 
 }
 
@@ -85,6 +91,7 @@ void GamePlayScene::Finalize()
 		delete block;
 	}
 
+	
 }
 
 void GamePlayScene::LoadBlockPopData() {

@@ -4,6 +4,7 @@
 #include"Input.h"
 #include<cassert>
 #include"WorldTransform.h"
+#include"Audio.h"
 class Player
 {
 public:
@@ -28,6 +29,9 @@ private:
 
 	Model* model_ = nullptr;
 	Input* input_ = nullptr;
+	Audio* audio_ = nullptr;
+
+
 	Vector2 speed_ = {};
 	WorldTransform worldTransform_;
 

@@ -19,6 +19,8 @@ void GameManager::Initialize()
 	texture->Initialize(kWindowWidth, kWindowHeight);
 	input = Input::GetInstance();
 	input->Initialize();
+	audio = Audio::GetInstance();
+	audio->Initialize();
 
 
 	CoInitializeEx(0, COINIT_MULTITHREADED);

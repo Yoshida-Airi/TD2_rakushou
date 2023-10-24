@@ -2,7 +2,7 @@
 #include"GamePlayScene.h"
 #include"GameTitleScene.h"
 #include"LeakCheck.h"
-
+#include"Audio.h"
 
 class GameManager
 {
@@ -31,6 +31,7 @@ private:
 	ImGuiManager* imGuiManager = nullptr;
 	TextureManager* texture = nullptr;
 	Input* input = nullptr;
+	Audio* audio = nullptr;
 
 };
 

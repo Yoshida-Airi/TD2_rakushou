@@ -14,6 +14,9 @@ void Player::Initialize(Model* model, Vector3 position)
 	model_ = model;
 	
 	input_ = Input::GetInstance();
+	audio_ = Audio::GetInstance();
+
+	
 
 	model_->Initialize("Resources", "cube.obj");
 
@@ -44,6 +47,7 @@ void Player::Update()
 
 	// 押した方向で移動ベクトルを変更(左右)
 	if (input_->PushKey(DIK_SPACE)) {
+	
 		move.y -= kCharacterSpeed;
 	}
 
