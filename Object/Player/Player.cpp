@@ -83,6 +83,7 @@ void Player::OnCollisionX(){
 
 void Player::OnCollisionY(){
 	kCharacterSpeedY *= -1;
+	kCharacterSpeed *= -1;
 }
 
 Vector3 Player::GetWorldPosition() {
