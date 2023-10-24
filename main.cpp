@@ -16,8 +16,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		scene->Draw();
 
 	}
-
-	scene->Finalize();
 	
 	return 0;
 }

@@ -1,6 +1,11 @@
 #include "GameTitleScene.h"
 
 
+GameTitleScene::~GameTitleScene()
+{
+
+}
+
 void GameTitleScene::Initialize()
 {
 	texture = TextureManager::GetInstance();
@@ -18,7 +23,3 @@ void GameTitleScene::Draw()
 
 }
 
-void GameTitleScene::Finalize()
-{
-
-}

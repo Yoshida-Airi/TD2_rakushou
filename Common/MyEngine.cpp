@@ -47,7 +47,7 @@ void MyEngine::PostDraw()
 
 }
 
-Microsoft::WRL::ComPtr< ID3D12Resource> MyEngine::CreateBufferResource(size_t sizeInBytes)
+Microsoft::WRL::ComPtr<ID3D12Resource> MyEngine::CreateBufferResource(size_t sizeInBytes)
 {
 
 	D3D12_HEAP_PROPERTIES uplodeHeapProperties{};

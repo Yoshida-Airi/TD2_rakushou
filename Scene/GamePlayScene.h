@@ -7,6 +7,8 @@
 #include"Model.h"
 #include"Input.h"
 #include"Audio.h"
+#include"ViewProjection.h"
+#include"WorldTransform.h"
 
 #include"Player.h"
 #include"Object/Block/Block.h"
@@ -16,10 +18,11 @@ class GamePlayScene
 {
 public:
 
+	~GamePlayScene();
 	void Initialize();
 	void Update();
 	void Draw();
-	void Finalize();
+
 
 	/// <summary>
 ///	衝突判定と応答

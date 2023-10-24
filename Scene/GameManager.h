@@ -15,10 +15,11 @@ class GameManager
 {
 public:
 
+	~GameManager();
 	void Initialize();
 	void Update();
 	void Draw();
-	void Finalize();
+	
 
 
 

@@ -1,5 +1,9 @@
 #include "WorldTransform.h"
 
+WorldTransform::~WorldTransform()
+{
+}
+
 void WorldTransform::Initialize()
 {
 	engine_ = MyEngine::GetInstance();

@@ -1,5 +1,27 @@
 #include "GameManager.h"
 
+GameManager::~GameManager()
+{
+
+#ifdef _DEBUG
+	D3DResourceLeakChecker leakCheak;
+#endif // _DEBUG
+
+
+	CoUninitialize();
+
+	delete title;
+	delete gameScene;
+
+	delete engine;
+	delete texture;
+	delete dxCommon;
+	delete winApp;
+	delete input;
+	delete imGuiManager;
+
+}
+
 void GameManager::Initialize()
 {
 	winApp = WindowAPI::GetInstance();
@@ -106,24 +128,3 @@ void GameManager::Draw()
 	dxCommon->PostDraw();
 }
 
-void GameManager::Finalize()
-{
-#ifdef _DEBUG
-	D3DResourceLeakChecker leakCheak;
-#endif // _DEBUG
-
-
-	CoUninitialize();
-
-
-	gameScene->Finalize();
-	title->Finalize();
-
-	delete engine;
-	delete texture;
-	delete dxCommon;
-	delete winApp;
-	delete input;
-	delete imGuiManager;
-
-}

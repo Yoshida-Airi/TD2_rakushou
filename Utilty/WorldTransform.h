@@ -24,6 +24,7 @@ struct WorldTransform {
 
 	MyEngine* engine_;
 
+	~WorldTransform();
 	/// <summary>
 	/// 初期化
 	/// </summary>

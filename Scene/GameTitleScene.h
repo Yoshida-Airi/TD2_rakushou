@@ -14,10 +14,11 @@
 class GameTitleScene
 {
 public:
+	~GameTitleScene();
 	void Initialize();
 	void Update();
 	void Draw();
-	void Finalize();
+	
 
 private:
 	TextureManager* texture = nullptr;

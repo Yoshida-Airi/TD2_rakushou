@@ -1,5 +1,21 @@
 #include "GamePlayScene.h"
 
+
+GamePlayScene::~GamePlayScene()
+{
+	delete player_;
+	delete model_;
+	delete model2_;
+	delete model3_;
+	delete sprite;
+	delete spriteData;
+	delete sphere;
+
+	for (Block* block : blocks_) {
+		delete block;
+	}
+}
+
 void GamePlayScene::Initialize()
 {
 	texture = TextureManager::GetInstance();
@@ -71,29 +87,12 @@ void GamePlayScene::Draw()
 		block->Draw(viewProjection_);
 	}
 
-
-
 	player_->Draw(viewProjection_);
 	//sprite->Draw(spriteTransform_);
 	sphere->Draw();
 
 }
 
-void GamePlayScene::Finalize()
-{
-	delete player_;
-	delete model_;
-	delete model2_;
-	delete model3_;
-	delete sprite;
-	delete spriteData;
-	delete sphere;
-
-	for (Block* block : blocks_) {
-		delete block;
-	}
-
-}
 
 void GamePlayScene::CheckAllCollisions(){
 	// 判定衝突AとBの座標

@@ -15,7 +15,10 @@ void Block::Initialize(Model* model, Vector3 translation, const std::string& fil
 	worldTransform_.translation_ = translation;
 }
 
-Block::~Block() {}
+Block::~Block() 
+{
+
+}
 
 void Block::Move() {
 	worldTransform_.translation_.x -= velocity_.x;
