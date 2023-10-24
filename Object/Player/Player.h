@@ -29,6 +29,7 @@ public:
 	/// </summary>
 	void OnCollisionX();
 	void OnCollisionY();
+	void OnCollisionGoal();
 
 	// ワールド座標を取得
 	Vector3 GetWorldPosition();
@@ -47,6 +48,7 @@ private:
 	float kCharacterSpeed = 0.3f;
 
 	bool isStart = false;
+	bool isGoal = false;
 
 	Vector3 move;
 };

@@ -119,6 +119,10 @@ void GamePlayScene::CheckAllCollisions(){
 			if (block->GetType() == 2) {
 				player_->OnCollisionX();
 			}
+
+			if (block->GetType() == 3) {
+				player_->OnCollisionGoal();
+			}
 		}
 
 		/*float leftA = posA.x;
@@ -218,8 +222,11 @@ void GamePlayScene::BlockSpown(Vector3 translation, float type) {
 	// ブロックの生成
 	Block* block_ = new Block();
 	// ブロックの初期化
-	if (type < 3) {
+	if (type <= 2) {
 		block_->Initialize(model_,  translation);
+	}
+	if (type == 3) {
+		block_->Initialize(model_, translation);
 	}
 	// ブロックのタイプ設定
 	block_->SetType(type);

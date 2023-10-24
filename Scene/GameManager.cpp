@@ -48,7 +48,7 @@ void GameManager::Update()
 		title->Update();
 		title->Draw();
 
-		if (input->TriggerKey(DIK_SPACE))
+		if (input->TriggerKey(DIK_RETURN))
 		{
 			scene = PLAY;
 		}
@@ -59,7 +59,7 @@ void GameManager::Update()
 		gameScene->Update();
 		gameScene->Draw();
 
-		if (input->TriggerKey(DIK_SPACE))
+		if (input->TriggerKey(DIK_RETURN))
 		{
 			scene = OVER;
 

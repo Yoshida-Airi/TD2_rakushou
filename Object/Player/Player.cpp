@@ -1,5 +1,4 @@
 #include "Player.h"
-#include "Player.h"
 
 Player::~Player()
 {
@@ -58,6 +57,12 @@ void Player::Update()
 	}
 
 
+	if (isGoal) {
+		kCharacterSpeedX = 0;
+		kCharacterSpeedY = 0;
+		kCharacterSpeed = 0;
+	}
+
 	// 座標移動(ベクトルの加算)
 	worldTransform_.translation_.x += move.x;
 	worldTransform_.translation_.y -= move.y;
@@ -84,6 +89,10 @@ void Player::OnCollisionX(){
 void Player::OnCollisionY(){
 	kCharacterSpeedY *= -1;
 	kCharacterSpeed *= -1;
+}
+
+void Player::OnCollisionGoal(){
+	isGoal = true;
 }
 
 Vector3 Player::GetWorldPosition() {
