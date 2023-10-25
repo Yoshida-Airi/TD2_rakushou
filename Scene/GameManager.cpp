@@ -62,8 +62,8 @@ void GameManager::Draw()
 #ifdef _DEBUG
 	imGuiManager->Draw();
 #endif // _DEBUG
-
-	
+//
+//	
 	engine->PostDraw();
 	dxCommon->PostDraw();
 }
@@ -83,6 +83,7 @@ void GameManager::Finalize()
 	gameScene->Finalize();
 	/*title->Finalize();*/
 
+	delete audio;
 	delete engine;
 	delete texture;
 	delete dxCommon;

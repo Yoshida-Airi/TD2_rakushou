@@ -27,8 +27,8 @@ void MyEngine::Initialize()
 
 	IntializeDXC();//DXCの初期化
 	PSO();//パイプラインステートの設定
-	CreateViewport();//ビューポートの生成
-	CreateScissor();	//シザー矩形の生成
+	//CreateViewport();//ビューポートの生成
+	//CreateScissor();	//シザー矩形の生成
 
 
 }
@@ -254,7 +254,6 @@ void MyEngine::CreateRootSignature()
 
 	//シリアライズしてバイナリにする
 	hr_ = D3D12SerializeRootSignature(&descriptionRootSignature_, D3D_ROOT_SIGNATURE_VERSION_1, &signatureBlob_, &errorBlob_);
-
 
 	if (FAILED(hr_))
 	{

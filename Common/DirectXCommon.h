@@ -56,6 +56,8 @@ public:
 	ID3D12DescriptorHeap* GetsrvDescriptorHeap()const { return srvDescriptorHeap_.Get(); };
 	ID3D12DescriptorHeap* GetDsvDescriptorHeap()const { return dsvDescriptorHeap_.Get(); };
 
+	
+
 	//静的メンバ変数の宣言と初期化
 	static DirectXCommon* instance;
 
@@ -98,9 +100,9 @@ private:
 	/// <param name="width">ウィンドウの幅</param>
 	/// <param name="height">ウィンドウの高さ</param>
 	/// <returns></returns>
-	ID3D12Resource* CreateDepthStencilTextureResource(ID3D12Device* device, int32_t width, int32_t height);
+	Microsoft::WRL::ComPtr< ID3D12Resource> CreateDepthStencilTextureResource(int32_t width, int32_t height);
 
-
+	void CreateDepthStencilView();
 
 private://プライベート変数
 
@@ -133,5 +135,10 @@ private://プライベート変数
 
 
 	Microsoft::WRL::ComPtr< ID3D12Debug1> debugController_ = nullptr;
+
+
+	D3D12_DEPTH_STENCIL_VIEW_DESC dsvDesc_;
+	Microsoft::WRL::ComPtr< ID3D12Resource> depthStencilResource_;
+
 
 };
