@@ -47,7 +47,9 @@ public:
 	void AddBlock(Block* block);
 
 	bool GetIsClear()const { return IsClear; };
-	bool GetIsOver()const { return IsOver; };
+	bool GetIsOver(){ return IsOver; };
+
+	void SetIsOver(bool isOver);
 
 	void Reset();
 

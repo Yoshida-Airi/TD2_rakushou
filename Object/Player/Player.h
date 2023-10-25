@@ -30,7 +30,6 @@ public:
 	void OnCollisionX();
 	void OnCollisionY();
 	void OnCollisionGoal();
-	void OnCollisionOver();
 
 	// ワールド座標を取得
 	Vector3 GetWorldPosition();
@@ -38,7 +37,7 @@ public:
 	void Reset();
 
 	bool GetIsClear()const { return isGoal; };
-	bool GetIsOver()const { return isOver; };
+
 
 private:
 

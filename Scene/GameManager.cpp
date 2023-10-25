@@ -120,6 +120,7 @@ void GameManager::Update()
 		if (gameScene->GetIsOver() == true)
 		{
 			scene = OVER;
+			gameScene->SetIsOver(false);
 
 		}
 

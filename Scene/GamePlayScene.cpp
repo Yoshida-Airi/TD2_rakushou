@@ -62,6 +62,7 @@ void GamePlayScene::Initialize()
 
 	LoadBlockPopData();
 
+	IsOver = false;
 }
 
 void GamePlayScene::Update()
@@ -79,7 +80,6 @@ void GamePlayScene::Update()
 	CheckAllCollisions();
 
 	IsClear = player_->GetIsClear();
-	IsOver = player_->GetIsOver();
 
 }
 
@@ -133,7 +133,7 @@ void GamePlayScene::CheckAllCollisions(){
 			}
 
 			if (block->GetType() == 4) {
-				player_->OnCollisionOver();
+				IsOver = true;
 			}
 		}
 
@@ -251,6 +251,10 @@ void GamePlayScene::BlockSpown(Vector3 translation, float type) {
 void GamePlayScene::AddBlock(Block* block) {
 	// リストに登録する
 	blocks_.push_back(block);
+}
+
+void GamePlayScene::SetIsOver(bool isOver){
+	IsOver = isOver;
 }
 
 void GamePlayScene::Reset()
