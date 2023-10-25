@@ -49,6 +49,8 @@ public:
 	bool GetIsClear()const { return IsClear; };
 	bool GetIsOver()const { return IsOver; };
 
+	void Reset();
+
 private:
 
 	TextureManager* texture = nullptr;

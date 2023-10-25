@@ -48,6 +48,7 @@ void Player::Update()
 	if (!Input::GetInstance()->GetJoystickState(0, joyState))
 	{
 		if (input_->PushKey(DIK_SPACE)) {
+		{
 			move.y -= kCharacterSpeed;
 			isStart = true;
 		}
@@ -114,4 +115,11 @@ Vector3 Player::GetWorldPosition() {
 	worldPos.z = worldTransform_.matWorld_.m[3][2];
 
 	return worldPos;
+}
+
+void Player::Reset()
+{
+	worldTransform_.translation_ = { -36, 20, 0 };
+	isGoal = false;
+	isStart = false;
 }

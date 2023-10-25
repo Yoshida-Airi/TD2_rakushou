@@ -252,3 +252,8 @@ void GamePlayScene::AddBlock(Block* block) {
 	// リストに登録する
 	blocks_.push_back(block);
 }
+
+void GamePlayScene::Reset()
+{
+	player_->Reset();
+}
