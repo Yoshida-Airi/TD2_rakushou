@@ -98,6 +98,8 @@ void GameManager::Update()
 			}
 		}
 
+		
+
 		break;
 
 	case PLAY:
@@ -109,10 +111,10 @@ void GameManager::Update()
 			scene = OVER;
 
 		}
-		if (input->TriggerKey(DIK_X))
+
+		if (gameScene->GetIsClear() == true)
 		{
 			scene = CLEAR;
-
 		}
 
 		break;

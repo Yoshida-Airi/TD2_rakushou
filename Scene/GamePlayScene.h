@@ -46,6 +46,8 @@ public:
 	/// </summary>
 	void AddBlock(Block* block);
 
+	bool GetIsClear()const { return IsClear; };
+
 private:
 
 	TextureManager* texture = nullptr;
@@ -69,6 +71,7 @@ private:
 
 	Player* player_ = nullptr;
 
+	bool IsClear;
 
 	Vector3 blockPos;
 

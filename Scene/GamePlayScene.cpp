@@ -78,6 +78,8 @@ void GamePlayScene::Update()
 
 	CheckAllCollisions();
 
+	IsClear = player_->GetIsClear();
+
 }
 
 void GamePlayScene::Draw()
