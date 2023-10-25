@@ -53,14 +53,14 @@ void Player::Update()
 				isStart = true;
 			}
 		}
+	}
 
-		if (Input::GetInstance()->GetJoystickState(0, joyState))
+	if (Input::GetInstance()->GetJoystickState(0, joyState))
+	{
+		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X)
 		{
-			if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X)
-			{
-				move.y -= kCharacterSpeed;
-				isStart = true;
-			}
+			move.y -= kCharacterSpeed;
+			isStart = true;
 		}
 	}
 
