@@ -61,7 +61,7 @@ void GameManager::Initialize()
 
 	scene = TITLE;
 
-	toachSE_ = audio->SoundLoadWave("Resources/Sounds/Cursor3.wav");
+	toachSE_ = audio->SoundLoadWave("Resources/Sounds/se_sad07.wav");
 
 	// Xボタンの前回の状態を格納するフラグ
 	bool xButtonWasPressed = false;
