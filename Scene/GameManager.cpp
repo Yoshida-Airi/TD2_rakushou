@@ -53,7 +53,7 @@ void GameManager::Initialize()
 	gameScene = new GamePlayScene;
 	gameScene->Initialize();
 
-	scene = PLAY;
+	scene = TITLE;
 
 }
 

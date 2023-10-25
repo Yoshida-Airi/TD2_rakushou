@@ -10,6 +10,8 @@
 #include"Sphere.h"
 #include"Model.h"
 #include"Input.h"
+#include"WorldTransform.h"
+#include"ViewProjection.h"
 
 class GameTitleScene
 {
@@ -30,7 +32,8 @@ private:
 	Model* model;
 	Model* model2;
 	
-
+	WorldTransform worldTransform_;
+	ViewProjection viewProjection_;
 
 	uint32_t uvTexture;
 	uint32_t monsterTexture;
