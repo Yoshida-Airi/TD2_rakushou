@@ -1,6 +1,8 @@
 #pragma once
 #include"GamePlayScene.h"
 #include"GameTitleScene.h"
+#include"GameOverScene.h"
+#include"GameClearScene.h"
 #include"LeakCheck.h"
 
 
@@ -9,6 +11,7 @@ enum Scene
 	TITLE,
 	PLAY,
 	OVER,
+	CLEAR,
 };
 
 class GameManager
@@ -26,6 +29,8 @@ public:
 private:
 	GamePlayScene* gameScene = nullptr;
 	GameTitleScene* title = nullptr;
+	GameOverScene* over = nullptr;
+	GameClearScene* clear = nullptr;
 
 	const wchar_t* kWindowTitle = L"CG2";
 

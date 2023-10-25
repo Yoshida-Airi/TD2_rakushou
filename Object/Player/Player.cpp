@@ -40,20 +40,25 @@ void Player::Update()
 		move.y += kCharacterSpeedY;
 	}
 
-	// 押した方向で移動ベクトルを変更(左右)
-	if (input_->PushKey(DIK_SPACE)) {
-		move.y -= kCharacterSpeed;
-		isStart = true;
-	}
-
 	//ゲームパットの状態を得る変数(XINPUT)
 	XINPUT_STATE joyState;
+
+
+	// 押した方向で移動ベクトルを変更(左右)
+	if (!Input::GetInstance()->GetJoystickState(0, joyState))
+	{
+		if (input_->PushKey(DIK_SPACE)) {
+			move.y -= kCharacterSpeed;
+			isStart = true;
+		}
+	}
 
 	if (Input::GetInstance()->GetJoystickState(0, joyState))
 	{
 		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X)
 		{
 			move.y -= kCharacterSpeed;
+			isStart = true;
 		}
 	}
 

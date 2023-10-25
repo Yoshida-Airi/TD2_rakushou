@@ -12,6 +12,8 @@ GameManager::~GameManager()
 
 	delete title;
 	delete gameScene;
+	delete over;
+	delete clear;
 
 	delete engine;
 	delete texture;
@@ -52,6 +54,10 @@ void GameManager::Initialize()
 	title->Initialize();
 	gameScene = new GamePlayScene;
 	gameScene->Initialize();
+	over = new GameOverScene;
+	over->Initialize();
+	clear = new GameClearScene;;
+	clear->Initialize();
 
 	scene = TITLE;
 
@@ -72,9 +78,24 @@ void GameManager::Update()
 		title->Update();
 		title->Draw();
 
-		if (input->TriggerKey(DIK_RETURN))
+		//ゲームパットの状態を得る変数(XINPUT)
+		XINPUT_STATE joyState;
+
+		if (!Input::GetInstance()->GetJoystickState(0, joyState))
 		{
-			scene = PLAY;
+			if (input->TriggerKey(DIK_RETURN))
+			{
+				scene = PLAY;
+			}
+		}
+		
+
+		if (Input::GetInstance()->GetJoystickState(0, joyState))
+		{
+			if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X)
+			{
+				scene = PLAY;
+			}
 		}
 
 		break;
@@ -88,15 +109,38 @@ void GameManager::Update()
 			scene = OVER;
 
 		}
+		if (input->TriggerKey(DIK_X))
+		{
+			scene = CLEAR;
+
+		}
 
 		break;
 
 	case OVER:
 
-		scene = TITLE;
+		over->Update();
+		over->Draw();
 
+		if (input->TriggerKey(DIK_RETURN))
+		{
+			scene = TITLE;
+		}
 
 		break;
+
+	case CLEAR:
+
+		clear->Update();
+		clear->Draw();
+
+		if (input->TriggerKey(DIK_RETURN))
+		{
+			scene = TITLE;
+		}
+
+		break;
+
 	}
 
 
