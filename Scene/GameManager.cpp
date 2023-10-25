@@ -61,6 +61,9 @@ void GameManager::Initialize()
 
 	scene = TITLE;
 
+	// Xボタンの前回の状態を格納するフラグ
+	bool xButtonWasPressed = false;
+
 }
 
 void GameManager::Update()
@@ -83,7 +86,7 @@ void GameManager::Update()
 
 		if (!Input::GetInstance()->GetJoystickState(0, joyState))
 		{
-			if (input->TriggerKey(DIK_RETURN))
+			if (input->TriggerKey(DIK_SPACE))
 			{
 				scene = PLAY;
 			}
@@ -92,9 +95,17 @@ void GameManager::Update()
 
 		if (Input::GetInstance()->GetJoystickState(0, joyState))
 		{
-			if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X)
+			bool xButtonIsPressed = (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X) != 0;
+			if (xButtonIsPressed && !xButtonWasPressed)
 			{
 				scene = PLAY;
+				xButtonWasPressed = true;
+			}
+
+			// Xボタンが離された場合、フラグをリセット
+			if (!xButtonIsPressed) 
+			{
+				xButtonWasPressed = false;
 			}
 		}
 
@@ -124,10 +135,34 @@ void GameManager::Update()
 		over->Update();
 		over->Draw();
 
-		if (input->TriggerKey(DIK_RETURN))
+		if (!Input::GetInstance()->GetJoystickState(0, joyState))
 		{
-			scene = TITLE;
+			if (input->TriggerKey(DIK_SPACE))
+			{
+				scene = TITLE;
+			}
 		}
+
+
+		if (Input::GetInstance()->GetJoystickState(0, joyState))
+		{
+			bool xButtonIsPressed = (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X) != 0;
+			if (xButtonIsPressed && !xButtonWasPressed)
+			{
+				scene = TITLE;
+				xButtonWasPressed = true;
+			}
+
+			// Xボタンが離された場合、フラグをリセット
+			if (!xButtonIsPressed) 
+			{
+				xButtonWasPressed = false;
+			}
+
+
+		}
+
+
 
 		break;
 
@@ -136,9 +171,29 @@ void GameManager::Update()
 		clear->Update();
 		clear->Draw();
 
-		if (input->TriggerKey(DIK_RETURN))
+		if (!Input::GetInstance()->GetJoystickState(0, joyState))
 		{
-			scene = TITLE;
+			if (input->TriggerKey(DIK_X))
+			{
+				scene = TITLE;
+			}
+		}
+
+
+		if (Input::GetInstance()->GetJoystickState(0, joyState))
+		{
+			bool xButtonIsPressed = (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X) != 0;
+			if (xButtonIsPressed && !xButtonWasPressed)
+			{
+				scene = TITLE;
+				xButtonWasPressed = true;
+			}
+
+			// Xボタンが離された場合、フラグをリセット
+			if (!xButtonIsPressed)
+			{
+				xButtonWasPressed = false;
+			}
 		}
 
 		break;

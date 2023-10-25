@@ -47,6 +47,8 @@ private:
 	Input* input = nullptr;
 	Audio* audio = nullptr;
 
+	bool xButtonWasPressed = false;
+
 	Scene scene;
 	
 
