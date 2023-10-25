@@ -79,6 +79,7 @@ void GamePlayScene::Update()
 	CheckAllCollisions();
 
 	IsClear = player_->GetIsClear();
+	IsOver = player_->GetIsOver();
 
 }
 
@@ -129,6 +130,10 @@ void GamePlayScene::CheckAllCollisions(){
 
 			if (block->GetType() == 3) {
 				player_->OnCollisionGoal();
+			}
+
+			if (block->GetType() == 4) {
+				player_->OnCollisionOver();
 			}
 		}
 
@@ -233,6 +238,9 @@ void GamePlayScene::BlockSpown(Vector3 translation, float type) {
 		block_->Initialize(model2_,  translation,"cube.obj");
 	}
 	if (type == 3) {
+		block_->Initialize(model3_, translation, "clearblock.obj");
+	}
+	if (type == 4) {
 		block_->Initialize(model3_, translation, "clearblock.obj");
 	}
 	// ブロックのタイプ設定

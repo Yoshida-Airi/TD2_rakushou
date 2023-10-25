@@ -117,7 +117,7 @@ void GameManager::Update()
 		gameScene->Update();
 		gameScene->Draw();
 
-		if (input->TriggerKey(DIK_RETURN))
+		if (gameScene->GetIsOver() == true)
 		{
 			scene = OVER;
 

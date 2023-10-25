@@ -101,6 +101,10 @@ void Player::OnCollisionGoal(){
 	isGoal = true;
 }
 
+void Player::OnCollisionOver(){
+	isOver = true;
+}
+
 Vector3 Player::GetWorldPosition() {
 	// ワールド座標を入れる変数
 	Vector3 worldPos;

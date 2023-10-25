@@ -47,6 +47,7 @@ public:
 	void AddBlock(Block* block);
 
 	bool GetIsClear()const { return IsClear; };
+	bool GetIsOver()const { return IsOver; };
 
 private:
 
@@ -72,6 +73,7 @@ private:
 	Player* player_ = nullptr;
 
 	bool IsClear;
+	bool IsOver;
 
 	Vector3 blockPos;
 
