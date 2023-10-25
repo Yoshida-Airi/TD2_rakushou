@@ -98,9 +98,7 @@ private:
 	/// <param name="width">ウィンドウの幅</param>
 	/// <param name="height">ウィンドウの高さ</param>
 	/// <returns></returns>
-	ID3D12Resource* CreateDepthStencilTextureResource(ID3D12Device* device, int32_t width, int32_t height);
-
-
+	Microsoft::WRL::ComPtr< ID3D12Resource> CreateDepthStencilTextureResource(int32_t width, int32_t height);
 
 private://プライベート変数
 
@@ -131,7 +129,9 @@ private://プライベート変数
 	HANDLE fenceEvent_ = nullptr;
 	Microsoft::WRL::ComPtr< IDXGIAdapter4> useAdapter_ = nullptr;
 
-
 	Microsoft::WRL::ComPtr< ID3D12Debug1> debugController_ = nullptr;
+
+	D3D12_DEPTH_STENCIL_VIEW_DESC dsvDesc_;
+	Microsoft::WRL::ComPtr< ID3D12Resource> depthStencilResource_;
 
 };
