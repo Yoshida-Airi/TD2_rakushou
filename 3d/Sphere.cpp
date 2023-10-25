@@ -167,7 +167,7 @@ void Sphere::Update()
 	wvpData_->World = worldMatrix;
 
 #ifdef _DEBUG
-	ImGui::Begin("texture");
+	/*ImGui::Begin("texture");
 	ImGui::Checkbox("useMonsterBall", &useMonsterBall);
 
 	float direction[] = { lightData_->direction.x,lightData_->direction.y,lightData_->direction.z };
@@ -176,7 +176,7 @@ void Sphere::Update()
 	lightData_->direction.x = direction[0];
 	lightData_->direction.y = direction[1];
 	lightData_->direction.z = direction[2];
-	ImGui::End();
+	ImGui::End();*/
 #endif // _DEBUG
 
 
