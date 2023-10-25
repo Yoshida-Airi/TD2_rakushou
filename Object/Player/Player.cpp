@@ -48,21 +48,21 @@ void Player::Update()
 	if (!Input::GetInstance()->GetJoystickState(0, joyState))
 	{
 		if (input_->PushKey(DIK_SPACE)) {
+			{
+				move.y -= kCharacterSpeed;
+				isStart = true;
+			}
+		}
+
+		if (Input::GetInstance()->GetJoystickState(0, joyState))
 		{
-			move.y -= kCharacterSpeed;
-			isStart = true;
+			if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X)
+			{
+				move.y -= kCharacterSpeed;
+				isStart = true;
+			}
 		}
 	}
-
-	if (Input::GetInstance()->GetJoystickState(0, joyState))
-	{
-		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X)
-		{
-			move.y -= kCharacterSpeed;
-			isStart = true;
-		}
-	}
-
 
 	if (isGoal) {
 		kCharacterSpeedX = 0;
@@ -84,8 +84,7 @@ void Player::Update()
 /// <summary>
 /// 初期化
 /// </ summary>
-void Player::Draw(ViewProjection viewProjection)
-{
+void Player::Draw(ViewProjection viewProjection){
 	model_->Draw(viewProjection, worldTransform_);
 }
 
