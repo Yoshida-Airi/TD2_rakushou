@@ -49,6 +49,8 @@ private:
 
 	bool xButtonWasPressed = false;
 
+	SoundData toachSE_;
+
 	Scene scene;
 	
 

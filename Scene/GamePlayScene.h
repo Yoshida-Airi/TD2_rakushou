@@ -69,11 +69,14 @@ private:
 	Model* model3_ = nullptr;
 	Model* model4_ = nullptr;
 
+	Model* resetModel = nullptr;
+
 	uint32_t uvTexture;
 	uint32_t monsterTexture;
 
 	ViewProjection viewProjection_;
 	WorldTransform spriteTransform_;
+	WorldTransform resetWorldTransform;
 
 	Player* player_ = nullptr;
 

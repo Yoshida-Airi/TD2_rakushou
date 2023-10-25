@@ -12,14 +12,20 @@ void Player::Initialize(Model* model, Vector3 position, const std::string& filen
 {
 	assert(model);
 	model_ = model;
-	
+
 	input_ = Input::GetInstance();
+	audio_ = Audio::GetInstance();
+
+
+
 
 	model_->Initialize("Resources", filename);
 
 	worldTransform_.Initialize();
 	worldTransform_.translation_ = position;
 	worldTransform_.UpdateMatrix();
+
+	isReset = false;
 }
 
 /// <summary>
@@ -27,57 +33,59 @@ void Player::Initialize(Model* model, Vector3 position, const std::string& filen
 /// </ summary>
 void Player::Update()
 {// キャラクターの移動ベクトル
-	move = { 0, 0, 0 };
+		move = { 0, 0, 0 };
 
-	move.x += kCharacterSpeedX;
-	move.y += kCharacterSpeedY;
-
-	// キャラクターの移動ベクトル
-	move = { 0, 0, 0 };
-
-	if (isStart) {
 		move.x += kCharacterSpeedX;
 		move.y += kCharacterSpeedY;
-	}
 
-	//ゲームパットの状態を得る変数(XINPUT)
-	XINPUT_STATE joyState;
+		// キャラクターの移動ベクトル
+		move = { 0, 0, 0 };
+
+		if (isStart) {
+			move.x += kCharacterSpeedX;
+			move.y += kCharacterSpeedY;
+		}
+
+		//ゲームパットの状態を得る変数(XINPUT)
+		XINPUT_STATE joyState;
 
 
-	// 押した方向で移動ベクトルを変更(左右)
-	if (!Input::GetInstance()->GetJoystickState(0, joyState))
-	{
-		if (input_->PushKey(DIK_SPACE)) {
+		// 押した方向で移動ベクトルを変更(左右)
+		if (!Input::GetInstance()->GetJoystickState(0, joyState))
+		{
+			if (input_->PushKey(DIK_SPACE)) {
+				{
+					move.y -= kCharacterSpeed;
+					isStart = true;
+				}
+			}
+		}
+
+		if (Input::GetInstance()->GetJoystickState(0, joyState))
+		{
+			if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X)
 			{
 				move.y -= kCharacterSpeed;
 				isStart = true;
 			}
 		}
-	}
 
-	if (Input::GetInstance()->GetJoystickState(0, joyState))
-	{
-		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_X)
-		{
-			move.y -= kCharacterSpeed;
-			isStart = true;
+		if (isGoal) {
+			kCharacterSpeedX = 0;
+			kCharacterSpeedY = 0;
+			kCharacterSpeed = 0;
 		}
-	}
 
-	if (isGoal) {
-		kCharacterSpeedX = 0;
-		kCharacterSpeedY = 0;
-		kCharacterSpeed = 0;
-	}
-
-	// 座標移動(ベクトルの加算)
-	worldTransform_.translation_.x += move.x;
-	worldTransform_.translation_.y -= move.y;
+		// 座標移動(ベクトルの加算)
+		worldTransform_.translation_.x += move.x;
+		worldTransform_.translation_.y -= move.y;
 
 
-	// ワールドトランスフォームの更新
-	worldTransform_.UpdateMatrix();
+		// ワールドトランスフォームの更新
+		worldTransform_.UpdateMatrix();
 
+
+		GamePlayReset();
 
 }
 
@@ -110,6 +118,49 @@ Vector3 Player::GetWorldPosition() {
 	worldPos.z = worldTransform_.matWorld_.m[3][2];
 
 	return worldPos;
+}
+
+void Player::GamePlayReset()
+{
+
+	//ゲームパットの状態を得る変数(XINPUT)
+	XINPUT_STATE joyState;
+
+		// 押した方向で移動ベクトルを変更(左右)
+	if (!Input::GetInstance()->GetJoystickState(0, joyState))
+	{
+		if (input_->PushKey(DIK_A))
+		{
+		
+			isReset = true;
+
+		}
+
+		if (isReset == true)
+		{
+			Reset();
+			isReset = false;
+		}
+
+			
+	}
+
+	if (Input::GetInstance()->GetJoystickState(0, joyState))
+	{
+		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_A)
+		{
+			
+			isReset = true;
+			
+		}
+
+		if (isReset == true)
+		{
+			Reset();
+			isReset = false;
+		}
+	}
+
 }
 
 void Player::Reset()

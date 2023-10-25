@@ -8,6 +8,7 @@ GamePlayScene::~GamePlayScene()
 	delete model2_;
 	delete model3_;
 	delete model4_;
+	delete resetModel;
 	delete sprite;
 	delete spriteData;
 	delete sphere;
@@ -29,6 +30,7 @@ void GamePlayScene::Initialize()
 	model2_ = new Model;
 	model3_ = new Model;
 	model4_ = new Model;
+	resetModel = new Model;
 	sphere = new Sphere;
 	player_ = new Player;
 
@@ -53,6 +55,7 @@ void GamePlayScene::Initialize()
 
 	uvTexture = texture->LoadTexture("Resources/galaxy.png");
 	monsterTexture = texture->LoadTexture("Resources/monsterBall.png");
+	
 
 	soundData1 = audio->SoundLoadWave("Resources/Sounds/digitalworld.wav");
 	audio->SoundPlayWave(soundData1, true);
@@ -61,6 +64,13 @@ void GamePlayScene::Initialize()
 	sphere->Initialize(uvTexture);
 	Vector3 playerPos = { -36, 20, 0 };
 	player_->Initialize(model_, playerPos, "plane.obj");
+	resetModel->Initialize("Resources", "Reset.obj");
+
+	resetWorldTransform.Initialize();
+	resetWorldTransform.translation_ = { 20,-20,0 };
+	resetWorldTransform.scale_ = { 5,5,0 };
+
+	resetWorldTransform.UpdateMatrix();
 
 	LoadBlockPopData();
 
@@ -76,6 +86,9 @@ void GamePlayScene::Update()
 		block->Update();
 	}
 	player_->Update();
+	
+	resetWorldTransform.UpdateMatrix();
+
 	sphere->Update();
 	sprite->Update();
 
@@ -92,9 +105,13 @@ void GamePlayScene::Draw()
 		block->Draw(viewProjection_);
 	}
 
+
+
 	player_->Draw(viewProjection_);
 	//sprite->Draw(spriteTransform_);
 	sphere->Draw();
+
+	resetModel->Draw(viewProjection_, resetWorldTransform);
 
 }
 
