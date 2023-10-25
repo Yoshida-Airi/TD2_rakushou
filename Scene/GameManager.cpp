@@ -135,6 +135,8 @@ void GameManager::Update()
 		over->Update();
 		over->Draw();
 
+		gameScene->Reset();
+
 		if (!Input::GetInstance()->GetJoystickState(0, joyState))
 		{
 			if (input->TriggerKey(DIK_SPACE))
@@ -170,6 +172,8 @@ void GameManager::Update()
 
 		clear->Update();
 		clear->Draw();
+
+		gameScene->Reset();
 
 		if (!Input::GetInstance()->GetJoystickState(0, joyState))
 		{

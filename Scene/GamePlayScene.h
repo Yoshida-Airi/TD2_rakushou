@@ -48,6 +48,8 @@ public:
 
 	bool GetIsClear()const { return IsClear; };
 
+	void Reset();
+
 private:
 
 	TextureManager* texture = nullptr;

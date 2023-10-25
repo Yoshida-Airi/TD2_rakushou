@@ -34,6 +34,8 @@ public:
 	// ワールド座標を取得
 	Vector3 GetWorldPosition();
 
+	void Reset();
+
 	bool GetIsClear()const { return isGoal; };
 
 private:
