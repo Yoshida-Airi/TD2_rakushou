@@ -67,6 +67,7 @@ private:
 	Model* model_ = nullptr;
 	Model* model2_ = nullptr;
 	Model* model3_ = nullptr;
+	Model* model4_ = nullptr;
 
 	uint32_t uvTexture;
 	uint32_t monsterTexture;

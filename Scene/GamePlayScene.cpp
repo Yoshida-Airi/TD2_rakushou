@@ -7,6 +7,7 @@ GamePlayScene::~GamePlayScene()
 	delete model_;
 	delete model2_;
 	delete model3_;
+	delete model4_;
 	delete sprite;
 	delete spriteData;
 	delete sphere;
@@ -27,6 +28,7 @@ void GamePlayScene::Initialize()
 	model_ = new Model;
 	model2_ = new Model;
 	model3_ = new Model;
+	model4_ = new Model;
 	sphere = new Sphere;
 	player_ = new Player;
 
@@ -241,7 +243,7 @@ void GamePlayScene::BlockSpown(Vector3 translation, float type) {
 		block_->Initialize(model3_, translation, "clearblock.obj");
 	}
 	if (type == 4) {
-		block_->Initialize(model3_, translation, "clearblock.obj");
+		block_->Initialize(model4_, translation, "damageblock.obj");
 	}
 	// ブロックのタイプ設定
 	block_->SetType(type);
