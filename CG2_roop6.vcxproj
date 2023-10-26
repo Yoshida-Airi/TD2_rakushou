@@ -83,6 +83,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>$(ProjectDir)Audio;$(ProjectDir)Utilty;$(ProjectDir)Object\Player;$(ProjectDir)Scene;$(ProjectDir)Input;$(ProjectDir)Logger;$(ProjectDir)2d;$(ProjectDir);$(ProjectDir)3d;$(ProjectDir)Resources\Shaders;$(ProjectDir)Math;$(ProjectDir)Common;$(ProjectDir)Resource\Shader;$(ProjectDir)Resource;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>MinSpace</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

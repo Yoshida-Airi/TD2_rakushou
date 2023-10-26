@@ -32,7 +32,7 @@ private:
 	GameOverScene* over = nullptr;
 	GameClearScene* clear = nullptr;
 
-	const wchar_t* kWindowTitle = L"CG2";
+	const wchar_t* kWindowTitle = L"2123_rakushou";
 
 	//アプリケーションの開始
 	const uint32_t kWindowWidth = 1280;
