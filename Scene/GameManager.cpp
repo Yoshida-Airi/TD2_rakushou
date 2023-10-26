@@ -218,9 +218,9 @@ void GameManager::Update()
 
 
 #ifdef _DEBUG	//現在のシーン番号
-	ImGui::Begin("Scene");
+	/*ImGui::Begin("Scene");
 	ImGui::Text("%d", scene);
-	ImGui::End();
+	ImGui::End();*/
 #endif // _DEBUG
 
 

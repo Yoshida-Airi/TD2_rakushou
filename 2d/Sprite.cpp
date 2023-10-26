@@ -78,13 +78,13 @@ void Sprite::Update()
 	materialData_->uvTransform = uvTransformMatrix_;
 
 #ifdef _DEBUG
-	ImGui::Begin("UVTransform");
+	/*ImGui::Begin("UVTransform");
 
 	ImGui::DragFloat2("UVTranslate", &uvTransform_.translate.x, 0.01f, -10.0f, 10.0f);
 	ImGui::DragFloat2("UVScale", &uvTransform_.scale.x, 0.01f, -10.0f, 10.0f);
 	ImGui::SliderAngle("UVRotate", &uvTransform_.rotate.z);
 
-	ImGui::End();
+	ImGui::End();*/
 #endif // _DEBUG
 
 
